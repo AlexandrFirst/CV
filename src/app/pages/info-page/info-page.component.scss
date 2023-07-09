@@ -1,0 +1,40 @@
+.info-image {
+    object-fit: contain;
+    width: 100%;
+    border-radius: 50%;
+    border: 10px solid #ffffff;
+}
+
+.info-text{
+    font-family: inherit;
+    font-size: larger;
+    text-align: justify;
+}
+
+.d-1050-none {
+    display: none;
+}
+
+@media (max-width: 1050px) and (min-width: 768px) {
+    .d-1050-none {
+        display: block;
+    }
+}
+
+
+@media (max-width: 1050px) and (min-width: 817px){
+    .info-text {
+        padding-right: 1em;
+    }
+}
+
+@media (max-width: 766px){
+    .info-text {
+        padding-right: 1em;
+    }
+}
+
+.main-content{
+    height: 100%;
+    overflow-x: scroll;
+}
