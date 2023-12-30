@@ -9,15 +9,10 @@
     font-size: 1.3rem;
 }
 
-.responsibility-item{
-    float: left;
-    width: 33%;
-}
-
 .responsibility-list{
     list-style-type: disc;
     -webkit-columns: 2;
     -moz-columns: 2;
     columns: 2;
-    list-style-position: inside;//this is important addition
+    list-style-position: inside;
 }
