@@ -44,21 +44,9 @@
     }
 }
 
-@media (max-width: 1050px) and (min-width: 817px) {
-    .info-text {
-        padding-right: 1em;
-    }
-}
-
-@media (max-width: 766px) {
-    .info-text {
-        padding-right: 1em;
-    }
-}
-
 .main-content {
     height: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 small {
