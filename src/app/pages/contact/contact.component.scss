@@ -283,10 +283,10 @@ textarea.input+.shadow-input {
 
 @media(max-width: 768px) {
     .contact-form {
-        width: 100%
+        width: 100%;
+        margin-left: 15px;
     }
 }
-
 
 .validate-input {
     position: relative
