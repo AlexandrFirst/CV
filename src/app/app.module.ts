@@ -20,6 +20,7 @@ import { PortfolioComponent } from './pages/portfolio/portfolio.component'
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FontAwesomeModule,
     RecaptchaV3Module,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     {

@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { firstValueFrom } from 'rxjs';
+import { MailService, SendMailResponse } from 'src/app/services/mail.service';
 import VanillaTilt from "vanilla-tilt";
 
 
@@ -20,7 +22,8 @@ export class ContactComponent implements OnInit {
   })
 
   constructor(private el: ElementRef,
-    private recaptchaV3Service: ReCaptchaV3Service) {
+    private recaptchaV3Service: ReCaptchaV3Service,
+    private mailService: MailService) {
   }
 
   ngOnInit(): void {
@@ -29,10 +32,26 @@ export class ContactComponent implements OnInit {
     );
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.emailFormSubmitted = true;
     if (this.emailForm.valid) {
-      
+      debugger;
+      const captchaToken = await firstValueFrom(this.recaptchaV3Service.execute("send_email"))
+
+      this.mailService.SendEmail({
+        captchaToken: captchaToken,
+        messageContent: this.message!.value!,
+        messageSubject: this.subject!.value!,
+        senderEmail: this.email!.value!,
+        senderName: this.name!.value!
+      }).subscribe({
+        next: (response: SendMailResponse) => {
+          console.log("message send: ", response)
+        },
+        error: (err) => {
+          console.log("Unexpecetd error: ", err)
+        }
+      })
     }
   }
 
