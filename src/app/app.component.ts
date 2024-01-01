@@ -7,14 +7,15 @@ import tippy from 'tippy.js';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
   ngOnInit(): void {
     this.initTooltip("info-link", "general info");
     this.initTooltip("experience-link", "experience");
     this.initTooltip("portfolio-link", "portfolio");
     this.initTooltip("contact-link", "contact");
   }
-  
-  private initTooltip(className: string, text: string){
+
+  private initTooltip(className: string, text: string) {
     tippy(`.${className}`, {
       content: text,
       arrow: false,
