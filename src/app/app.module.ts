@@ -21,6 +21,8 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from "@angular/common/http";
+import { ResumeComponent } from './pages/resume/resume.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { HttpClientModule} from "@angular/common/http";
     NotFoundComponent,
     ContactComponent,
     PortfolioComponent,
+    ResumeComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { HttpClientModule} from "@angular/common/http";
     FontAwesomeModule,
     RecaptchaV3Module,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxExtendedPdfViewerModule 
   ],
   providers: [
     {
