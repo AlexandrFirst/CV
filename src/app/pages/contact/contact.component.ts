@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 import VanillaTilt from "vanilla-tilt";
 
 @Component({
@@ -8,7 +9,8 @@ import VanillaTilt from "vanilla-tilt";
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private el: ElementRef) {
+  constructor(private el: ElementRef, 
+              private recaptchaV3Service: ReCaptchaV3Service) {
   }
 
   ngOnInit(): void {
