@@ -8,7 +8,8 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faUser as fasUser, faGraduationCap as fasGraduationCap,
-  faSuitcase as fasSuitcase, faEnvelope as fasEnvelope, faBars as fasBars
+  faSuitcase as fasSuitcase, faEnvelope as fasEnvelope, faBars as fasBars,
+  faLongArrowRight as fasLongArrowRight, faCircleNotch as fasCircleNotch
 } from '@fortawesome/free-solid-svg-icons'
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -20,9 +21,11 @@ import { PortfolioComponent } from './pages/portfolio/portfolio.component'
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { ResumeComponent } from './pages/resume/resume.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     RecaptchaV3Module,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxExtendedPdfViewerModule 
+    NgxExtendedPdfViewerModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {
@@ -56,6 +61,6 @@ export class AppModule {
     library.addIcons(faLinkedinIn, faGithub);
     library.addIcons(fasUser, fasGraduationCap, fasSuitcase, fasEnvelope);
     library.addIcons(fasBars);
+    library.addIcons(fasLongArrowRight, fasCircleNotch)
   }
-
 }
