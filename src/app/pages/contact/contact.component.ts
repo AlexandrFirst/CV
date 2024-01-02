@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
 import { MailService, SendMailResponse } from 'src/app/services/mail.service';
 import VanillaTilt from "vanilla-tilt";
@@ -13,6 +14,7 @@ import VanillaTilt from "vanilla-tilt";
 })
 export class ContactComponent implements OnInit {
 
+  emailFormSending = false;
   emailFormSubmitted = false;
   emailForm = new FormGroup({
     name: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
@@ -21,9 +23,12 @@ export class ContactComponent implements OnInit {
     message: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(1000)]),
   })
 
+  private emailSent = false;
+
   constructor(private el: ElementRef,
     private recaptchaV3Service: ReCaptchaV3Service,
-    private mailService: MailService) {
+    private mailService: MailService,
+    private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -33,11 +38,19 @@ export class ContactComponent implements OnInit {
   }
 
   async onSubmit() {
+
+    if (this.emailSent) {
+      this.toastr.warning('You have already sent the message');
+      return;
+    }
+
     this.emailFormSubmitted = true;
+    
     if (this.emailForm.valid) {
-      debugger;
       const captchaToken = await firstValueFrom(this.recaptchaV3Service.execute("send_email"))
 
+      this.emailFormSending = true;
+      
       this.mailService.SendEmail({
         captchaToken: captchaToken,
         messageContent: this.message!.value!,
@@ -46,10 +59,13 @@ export class ContactComponent implements OnInit {
         senderName: this.name!.value!
       }).subscribe({
         next: (response: SendMailResponse) => {
-          console.log("message send: ", response)
+          this.emailSent = true;
+          this.emailFormSending = false;
+          this.toastr.success('Message is sent');
         },
         error: (err) => {
-          console.log("Unexpecetd error: ", err)
+          this.emailFormSending = false;
+          this.toastr.error('Something wrong. Try again later');
         }
       })
     }

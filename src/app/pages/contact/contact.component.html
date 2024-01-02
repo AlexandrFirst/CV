@@ -65,7 +65,9 @@
                 <button class="contact-form-btn" type="submit">
                     <span>
                         Send Email
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        <fa-icon *ngIf="!emailFormSending" [icon]="['fas', 'long-arrow-right']" size="lg"></fa-icon>
+                        <fa-icon *ngIf="emailFormSending" [icon]="['fas', 'circle-notch']" [spin]="true"
+                            size="lg"></fa-icon>
                     </span>
                 </button>
             </div>
