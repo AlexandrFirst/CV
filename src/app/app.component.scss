@@ -89,7 +89,7 @@
     }
 }
 
-.navigation-bar-collapsable{
+.navigation-bar-collapsable {
     display: none;
     position: absolute;
     width: 70px;
@@ -97,10 +97,10 @@
     right: 0;
     height: 100%;
     overflow-y: auto;
-    
+
     fa-icon {
         background-color: #eeeeee00;
-        
+
         display: block;
         height: 100px;
         line-height: 100px;
@@ -113,11 +113,11 @@
         display: none;
     }
 
-    .navigation-bar{
+    .navigation-bar {
         display: none;
     }
 
-    .navigation-bar-collapsable{
+    .navigation-bar-collapsable {
         display: block;
     }
 
@@ -143,14 +143,12 @@
     }
 }
 
-
-
 .navigation {
     width: 50px;
     height: 100px;
 }
 
-.active-link{
+.active-link {
     color: #04b4df !important;
 }
 
@@ -162,4 +160,4 @@
 .link:hover {
     color: #5dbfc2;
 }
-   
+
